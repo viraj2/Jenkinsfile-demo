@@ -109,6 +109,7 @@ node('master'){
 				//JSONArray data=(JSONArray)responsejson.get("data");
 				//JSONObject dataarray=(JSONObject)data.get(0);
 				//fileid=(String)dataarray.get("id");
+				echo builder1.toString()
 				JSONObject responsejson = new JSONObject(builder1.toString());
 				JSONArray dataarray=responsejson.getJSONArray("data");
 				JSONObject data=dataarray.getJSONObject(0);
