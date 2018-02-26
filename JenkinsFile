@@ -89,10 +89,15 @@ node('master'){
 			HttpEntity entity = response.getEntity();
 			if(entity!=null)
 			{
+				echo "Entity is not null"
 				InputStream content = entity.getContent();
+				echo "After inputastream"
 				def builder1 = new StringBuilder();
+				echo "After stringbuilder"
 				Reader read = new InputStreamReader(content, StandardCharsets.UTF_8);
+				echo "After reader"
 				BufferedReader reader = new BufferedReader(read);
+				echo "After buffered reader"
 				String line;
 				try {
 					while ((line = reader.readLine()) != null) {
