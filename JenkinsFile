@@ -15,10 +15,10 @@ node('master'){
     stage('Clean') {
         deleteDir()
     }
-    /*stage('Checkout') {
+    stage('Checkout') {
         checkout scm
     }
-	stage('Build'){
+	/*stage('Build'){
 		if (isUnix()) {
 			sh "'${mvnHome}/bin/mvn' clean test"
 		} else {
