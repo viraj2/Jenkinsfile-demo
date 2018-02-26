@@ -83,11 +83,12 @@ node('master'){
 		}
 		else
 		{
+			echo "StatusCode:"+code
 			HttpEntity entity = response.getEntity();
 			if(entity!=null)
 			{
 				InputStream content = entity.getContent();
-				StringBuilder  builder1 = new StringBuilder();
+				def builder1 = new StringBuilder();
 				Reader read = new InputStreamReader(content, StandardCharsets.UTF_8);
 				BufferedReader reader = new BufferedReader(read);
 				String line;
