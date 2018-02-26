@@ -104,12 +104,13 @@ node('master'){
 						builder1.append(line);
 						echo line
 					}
-
+					echo "After try block"
 				}
 				finally{
 					reader.close();
 					content.close();
 				}
+				echo "After finally"
 				//JSONParser parser=new JSONParser();
 				//JSONObject responsejson=(JSONObject)parser.parse(builder1.toString());
 				//JSONArray data=(JSONArray)responsejson.get("data");
