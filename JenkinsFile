@@ -28,14 +28,14 @@ node('master'){
 	stage('UploadResults'){
 		load(workSpaceHome + "/config.groovy")
 		echo "Uploading testresult file........"
-		def baseurl=${baseUrl}
-		def apikey=${apikey}
-		def scope=${scope}
-		def absolutefilepath=workSpaceHome+${filepath}
-		def buildid=${buildId}
-		def platformid=${platformId}
-		def dropid=${dropId}
-		def entitytype=${entityType}
+		def baseurl="${baseUrl}"
+		def apikey="${apikey}"
+		def scope="${scope}"
+		def absolutefilepath="workSpaceHome"+"${filepath}"
+		def buildid="${buildId}"
+		def platformid="${platformId}"
+		def dropid="${dropId}"
+		def entitytype="${entityType}"
 		def fileid
 		
 		echo "baseurl:"+baseurl
