@@ -89,7 +89,7 @@ node('master'){
 			{
 				InputStream content = entity.getContent();
 				def builder1 = new StringBuilder();
-				Reader read = new InputStreamReader(content, StandardCharsets.UTF_8);
+				Reader read = new InputStreamReader(content, "UTF_8");
 				BufferedReader reader = new BufferedReader(read);
 				String line;
 				try {
