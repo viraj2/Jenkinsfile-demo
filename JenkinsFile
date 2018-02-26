@@ -97,6 +97,7 @@ node('master'){
 				try {
 					while ((line = reader.readLine()) != null) {
 						builder1.append(line);
+						echo line
 					}
 
 				}
