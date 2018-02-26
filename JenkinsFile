@@ -89,7 +89,9 @@ node('master'){
 			HttpEntity entity = response.getEntity();
 			if(entity!=null)
 			{
-				echo "Entity is not null"
+				String jsonString = EntityUtils.toString(entity);
+				echo "Json response:"+jsonString
+				/*echo "Entity is not null"
 				InputStream content = entity.getContent();
 				echo "After inputastream"
 				def builder1 = new StringBuilder();
@@ -110,14 +112,14 @@ node('master'){
 					reader.close();
 					content.close();
 				}
-				echo "After finally"
+				echo "After finally"*/
 				//JSONParser parser=new JSONParser();
 				//JSONObject responsejson=(JSONObject)parser.parse(builder1.toString());
 				//JSONArray data=(JSONArray)responsejson.get("data");
 				//JSONObject dataarray=(JSONObject)data.get(0);
 				//fileid=(String)dataarray.get("id");
-				echo "JSON Response:"+builder1.toString()
-				JSONObject responsejson = new JSONObject(builder1.toString());
+				//echo "JSON Response:"+builder1.toString()
+				JSONObject responsejson = new JSONObject(jsonString);
 				JSONArray dataarray=responsejson.getJSONArray("data");
 				JSONObject data=dataarray.getJSONObject(0);
 				fileid=(String)data.getJSONObject("id");
