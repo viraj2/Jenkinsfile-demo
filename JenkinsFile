@@ -100,11 +100,11 @@ node('master'){
 					reader.close();
 					content.close();
 				}
-				/*JSONParser parser=new JSONParser();
-				JSONObject responsejson=(JSONObject)parser.parse(builder1.toString());
-				JSONObject data=(JSONObject)responsejson.get("data");
-				JSONObject dataarray=(JSONObject)data.get(0);
-				fileid=(String)dataarray.get("id");*/
+				//JSONParser parser=new JSONParser();
+				//JSONObject responsejson=(JSONObject)parser.parse(builder1.toString());
+				//JSONObject data=(JSONObject)responsejson.get("data");
+				//JSONObject dataarray=(JSONObject)data.get(0);
+				//fileid=(String)dataarray.get("id");
 				JSONObject responsejson = new JSONObject(builder1.toString());
 				JSONArray dataarray=responsejson.getJSONArray("data");
 				JSONObject data=dataarray.getJSONObject(0);
