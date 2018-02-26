@@ -10,9 +10,15 @@ import java.io.InputStream;
 
 import java.lang.StringBuilder;
 
-//import groovy.lang.Grab;
+/*import groovy.lang.Grab;
 @GrabConfig(systemClassLoader=true)
-@Grab('com.googlecode.json-simple:json-simple:1.1')
+@Grab('com.googlecode.json-simple:json-simple:1.1')*/
+def classLoader = ClassLoader.systemClassLoader
+while (classLoader.parent) {
+	classLoader = classLoader.parent
+}
+	classLoader.addURL(new File("/opt/oracle/product/11.2.0/client/jdbc/lib/ojdbc6.jar").toURL())
+import groovy.sql.Sql;		
 
 import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
@@ -54,6 +60,7 @@ node('master'){
 		echo "platformID:"+platformid
 		echo "dropID:"+dropid
 		echo "entityType:"+entitytype
+		
 		
 		//Uploading file
 		/*CloseableHttpClient httpClient = HttpClients.createDefault();
