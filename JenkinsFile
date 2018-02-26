@@ -11,7 +11,6 @@ import java.io.InputStream;
 import java.lang.StringBuilder;
 
 import org.json.*;
-import com.google.gson.JsonParser;
 /*import groovy.lang.Grab;
 @GrabConfig(systemClassLoader=true)
 @Grab('com.googlecode.json-simple:json-simple:1.1')*/
@@ -22,9 +21,9 @@ while (classLoader.parent) {
 //classLoader.addURL(new File("/opt/oracle/product/11.2.0/client/jdbc/lib/ojdbc6.jar").toURL())
 classLoader.addURL(new File("C:/Users/viraj.chhaiya/.m2/repository/com/googlecode/json-simple/json-simple/1.1/json-simple-1.1.jar").toURL())*/
 
-import org.json.simple.JSONObject;
+/*import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
-import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.JSONParser;*/
 
 node('master'){
 	def workSpaceHome = pwd()
@@ -101,11 +100,15 @@ node('master'){
 					reader.close();
 					content.close();
 				}
-				JSONParser parser=new JSONParser();
+				/*JSONParser parser=new JSONParser();
 				JSONObject responsejson=(JSONObject)parser.parse(builder1.toString());
 				JSONObject data=(JSONObject)responsejson.get("data");
 				JSONObject dataarray=(JSONObject)data.get(0);
-				fileid=(String)dataarray.get("id");
+				fileid=(String)dataarray.get("id");*/
+				JSONObject responsejson = new JSONObject(builder1.toString());
+				JSONArray dataarray=responsejson.getJSONArray("data");
+				JSONObject data=dataarray.getJSONObject(0);
+				String fileid=(String)data.getJSONObject("id");
 				echo fileid
 
 			}
