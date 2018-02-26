@@ -1,0 +1,25 @@
+Upload test results API
+POST:/rest/import/create/1
+Headers:
+Accept: application/json
+usertoken/apiKey:
+scope:
+
+Body:
+multipart/form-data
+file of testng/junit/cucumber
+
+Resoponse:
+FIleid
+
+
+Schedule a result import operation
+POST:/rest/import/scheduler/results
+HEADER:
+Accept:application/json
+Content-Type:application/json
+usertoken/apiKey
+scope
+
+Body:json raw data
+{buildID: ,platformID: ,dropID:, importFileId:, entityType:}
