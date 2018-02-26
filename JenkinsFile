@@ -55,7 +55,6 @@ node('master'){
 		def platformid="${platformId}"
 		def dropid="${dropId}"
 		def entitytype="${entityType}"
-		def fileid
 		
 		echo "baseurl:"+baseurl
 		echo "apikey:"+apikey
@@ -126,8 +125,10 @@ node('master'){
 				echo "dataarray:"+dataarray.toString()
 				JSONObject data=dataarray.getJSONObject(0);
 				echo "data:"+data
-				fileid=(String)data.getJSONObject("id");
-				echo "FileId:"+fileid
+				JSONObject fileidjson=data.getJSONObject("id");
+				echo "FileIdjson:"+fileidjson
+				String fileid=fileidjson.toString();
+				echo "fileid:"+fileid
 				
 				//Schedule a result import operation
 				HttpPost schedule=new HttpPost(baseurl+"/rest/import/scheduler/results");
