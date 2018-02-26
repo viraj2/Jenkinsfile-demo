@@ -121,8 +121,11 @@ node('master'){
 				//fileid=(String)dataarray.get("id");
 				//echo "JSON Response:"+builder1.toString()
 				JSONObject responsejson = new JSONObject(jsonString);
+				echo "responsejson.toString()"+responsejson.toString()
 				JSONArray dataarray=responsejson.getJSONArray("data");
+				echo "dataarray:"+dataarray.toString()
 				JSONObject data=dataarray.getJSONObject(0);
+				echo "data:"+data
 				fileid=(String)data.getJSONObject("id");
 				echo "FileId:"+fileid
 				
