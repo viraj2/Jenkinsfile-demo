@@ -10,6 +10,10 @@ import java.io.InputStream;
 
 import java.lang.StringBuilder;
 
+import org.json.simple.JSONObject;
+import org.json.simple.JSONArray;
+import org.json.simple.parser.JSONParser;
+
 node('master'){
 	def workSpaceHome = pwd()
     stage('Clean') {
@@ -31,7 +35,7 @@ node('master'){
 		def baseurl="${baseUrl}"
 		def apikey="${apikey}"
 		def scope="${scope}"
-		def absolutefilepath="workSpaceHome"+"${filepath}"
+		def absolutefilepath="${workSpaceHome}"+"/"+"${filepath}"
 		def buildid="${buildId}"
 		def platformid="${platformId}"
 		def dropid="${dropId}"
