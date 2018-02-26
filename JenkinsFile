@@ -125,9 +125,8 @@ node('master'){
 				echo "dataarray:"+dataarray.toString()
 				JSONObject data=dataarray.getJSONObject(0);
 				echo "data:"+data
-				JSONObject fileidjson=data.getJSONObject("id");
-				echo "FileIdjson:"+fileidjson
-				String fileid=fileidjson.toString();
+				String fileid=(String)data.get("id");
+				
 				echo "fileid:"+fileid
 				
 				//Schedule a result import operation
