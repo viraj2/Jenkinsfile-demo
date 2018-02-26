@@ -8,7 +8,7 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import java.io.File;
 import java.io.InputStream;
 
-import java.string.StringBuilder;
+import java.lang.StringBuilder;
 
 node('master'){
 	def workSpaceHome = pwd()
