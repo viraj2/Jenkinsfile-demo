@@ -10,15 +10,16 @@ import java.io.InputStream;
 
 import java.lang.StringBuilder;
 
+import org.json.*;
 /*import groovy.lang.Grab;
 @GrabConfig(systemClassLoader=true)
 @Grab('com.googlecode.json-simple:json-simple:1.1')*/
-def classLoader = ClassLoader.systemClassLoader
+/*def classLoader = ClassLoader.systemClassLoader
 while (classLoader.parent) {
 	classLoader = classLoader.parent
 }
 //classLoader.addURL(new File("/opt/oracle/product/11.2.0/client/jdbc/lib/ojdbc6.jar").toURL())
-classLoader.addURL(new File("C:/Users/viraj.chhaiya/.m2/repository/com/googlecode/json-simple/json-simple/1.1/json-simple-1.1.jar").toURL())
+classLoader.addURL(new File("C:/Users/viraj.chhaiya/.m2/repository/com/googlecode/json-simple/json-simple/1.1/json-simple-1.1.jar").toURL())*/
 
 import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
