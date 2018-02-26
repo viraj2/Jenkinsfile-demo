@@ -135,18 +135,19 @@ node('master'){
 				schedule.addHeader("Content-Type","application/json");
 				schedule.addHeader("apiKey",apikey);
 				schedule.addHeader("scope",scope);
-				
+				echo "After adding header"
 				JSONObject jsonbody=new JSONObject();
 				jsonbody.put("buildID",buildid);
 				jsonbody.put("platformID",platformid);
 				jsonbody.put("dropID",dropid);
 				jsonbody.put("importFileId",fileid);
 				jsonbody.put("entityType",entitytype);
-				
+				echo "After adding body"
 				schedule.setEntity(jsonbody.toString());
 				CloseableHttpResponse scheduleres=httpClient.execute(schedule);
+				echo "After completing execution"
 				int fcode=scheduleres.getStatusLine().getStatusCode();
-				echo fcode
+				echo "Final code:"+fcode
 			}
 		}
 		
