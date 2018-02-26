@@ -18,7 +18,7 @@ while (classLoader.parent) {
 	classLoader = classLoader.parent
 }
 //classLoader.addURL(new File("/opt/oracle/product/11.2.0/client/jdbc/lib/ojdbc6.jar").toURL())
-classLoader.addURL(new File("http://www.findjar.com/jar/com/googlecode/json-simple/json-simple/1.1/json-simple-1.1.jar.html").toURL())
+classLoader.addURL(new File("C:/Users/viraj.chhaiya/.m2/repository/com/googlecode/json-simple/json-simple/1.1/json-simple-1.1.jar").toURL())
 
 import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
