@@ -96,7 +96,7 @@ node('master'){
 				JSONArray dataarray=responsejson.getJSONArray("data");
 				JSONObject data=dataarray.getJSONObject(0);
 				String fileid=(String)data.get("id");
-				echo "fileid:"+fileid
+				echo "File Id:"+fileid
 				
 				//Schedule a result import operation
 				echo "Calling Schedule Result Import API.........."
