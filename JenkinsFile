@@ -74,7 +74,7 @@ node('master'){
 		int code=response.getStatusLine().getStatusCode();
 		if(code!=200)
 		{
-			echo "StatusCode:"+code
+			echo "Status Code:"+code
 			echo "[ERROR]Problem in uploading file"
 			HttpEntity entity = response.getEntity();
 			if(entity!=null)
@@ -85,7 +85,7 @@ node('master'){
 		}
 		else
 		{
-			echo "StatusCode:"+code
+			echo "Status Code:"+code
 			HttpEntity entity = response.getEntity();
 			if(entity!=null)
 			{
@@ -99,7 +99,7 @@ node('master'){
 				echo "fileid:"+fileid
 				
 				//Schedule a result import operation
-				echo "Calling Schedule a result import API.........."
+				echo "Calling Schedule a Result Import API.........."
 				HttpPost schedule=new HttpPost(baseurl+"/rest/import/scheduler/results");
 				
 				schedule.addHeader("Accept","application/json");
@@ -113,7 +113,7 @@ node('master'){
 				
 				CloseableHttpResponse scheduleres=httpClient.execute(schedule);
 				int fcode=scheduleres.getStatusLine().getStatusCode();
-				echo "Status code:"+fcode
+				echo "Status Code:"+fcode
 				if(code==200)
 				{
 					String finalresponse= EntityUtils.toString(scheduleres.getEntity());
