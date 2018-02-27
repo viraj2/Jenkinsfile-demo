@@ -1,0 +1,133 @@
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.apache.http.HttpEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.entity.mime.content.FileBody;
+import org.apache.http.util.EntityUtils;
+import org.apache.http.entity.StringEntity;
+
+import java.io.File;
+import java.io.InputStream;
+
+import java.nio.charset.StandardCharsets;
+
+import java.lang.StringBuilder;
+
+import org.json.*;
+
+node('master'){
+	def workSpaceHome = pwd()
+	
+    stage('Clean') {
+        deleteDir()
+    }
+	
+    stage('Checkout') {
+        git 'https://github.com/viraj2/Jenkinsfile-demo.git'
+    }
+	
+	stage('UploadResults'){
+		load(workSpaceHome + "/config.groovy")
+		echo "Uploading testresult file........"
+		def baseurl="${baseUrl}"
+		def apikey="${apikey}"
+		def scope="${scope}"
+		def absolutefilepath="${workSpaceHome}"+"/"+"${filepath}"
+		def buildid="${buildId}"
+		def platformid="${platformId}"
+		def dropid="${dropId}"
+		def entitytype="${entityType}"
+		
+		echo "baseurl:"+baseurl
+		echo "apikey:"+apikey
+		echo "scope:"+scope
+		echo "absolutepath:"+absolutefilepath
+		echo "buildID:"+buildid
+		echo "platformID:"+platformid
+		echo "dropID:"+dropid
+		echo "entityType:"+entitytype
+		
+		
+		//Uploading file
+		echo "Calling Upload Test Results API.........."
+		CloseableHttpClient httpClient = HttpClients.createDefault();
+		
+		HttpPost uploadFile=new HttpPost(baseurl+"/rest/import/create/1");
+		
+		uploadFile.addHeader("Accept","application/json");
+		uploadFile.addHeader("apiKey",apikey);
+		uploadFile.addHeader("scope",scope);
+		
+		MultipartEntityBuilder builder = MultipartEntityBuilder.create();
+		File f = new File(absolutefilepath);
+		
+		builder.addPart("file", new FileBody(f));
+		
+		HttpEntity multipart = builder.build();
+		
+		uploadFile.setEntity(multipart);
+		
+		CloseableHttpResponse response = httpClient.execute(uploadFile);
+		
+		int code=response.getStatusLine().getStatusCode();
+		if(code!=200)
+		{
+			echo "StatusCode:"+code
+			echo "[ERROR]Problem in uploading file"
+			HttpEntity entity = response.getEntity();
+			if(entity!=null)
+			{
+				String jsonString = EntityUtils.toString(entity);
+				echo "Error response:"+jsonString
+			}
+		}
+		else
+		{
+			echo "StatusCode:"+code
+			HttpEntity entity = response.getEntity();
+			if(entity!=null)
+			{
+				String jsonString = EntityUtils.toString(entity);
+				echo "Response of Upload Test Results API:"+jsonString
+				
+				JSONObject responsejson = new JSONObject(jsonString);
+				JSONArray dataarray=responsejson.getJSONArray("data");
+				JSONObject data=dataarray.getJSONObject(0);
+				String fileid=(String)data.get("id");
+				echo "fileid:"+fileid
+				
+				//Schedule a result import operation
+				echo "Calling Schedule a result import API.........."
+				HttpPost schedule=new HttpPost(baseurl+"/rest/import/scheduler/results");
+				
+				schedule.addHeader("Accept","application/json");
+				schedule.addHeader("Content-Type","application/json");
+				schedule.addHeader("apiKey",apikey);
+				schedule.addHeader("scope",scope);
+				
+				String body="{\"buildID\":"+buildid+",\"platformID\":"+platformid+",\"dropID\":"+dropid+",\"importFileId\":"+fileid+",\"entityType\":"+"\""+entitytype+"\"}"
+				StringEntity params =new StringEntity(body);
+				schedule.setEntity(params);
+				
+				CloseableHttpResponse scheduleres=httpClient.execute(schedule);
+				int fcode=scheduleres.getStatusLine().getStatusCode();
+				echo "Status code:"+fcode
+				if(code==200)
+				{
+					String finalresponse= EntityUtils.toString(scheduleres.getEntity());
+					echo "Response of Schedule a Result Import API:"+finalresponse
+				}
+				else
+				{
+					echo "[ERROR]Problem in schedule result import"
+					String finalresponse= EntityUtils.toString(scheduleres.getEntity());
+					echo "Error response:"+finalresponse
+				}
+			}
+		}
+		
+		
+	}
+}

@@ -1,4 +1,5 @@
 1)Go to Manage Jenkins->In-process Script Approval and add all these methods in signatures approved box.
+OR You can add following signatures in JENKINS_HOME->scriptApproval.xml.
 
 method java.io.BufferedReader readLine
 method java.lang.AutoCloseable close
