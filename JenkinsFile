@@ -39,10 +39,11 @@ node('master'){
         checkout scm
     }
 	stage('Build'){
-		withMaven(jdk: 'JDK', maven: 'maven3', mavenLocalRepo: '', mavenOpts: '', mavenSettingsFilePath: '') {
-           sh "mvn compile -Dbuild.version=${buildversion}"
-           sh "mvn package -P ${buildtarget}"
-        }
+		if (isUnix()) {
+			sh "mvn clean test"
+		} else {
+			bat(/mvn clean test/)
+		}
 	}
 	stage('UploadResults'){
 		load(workSpaceHome + "/config.groovy")
