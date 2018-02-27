@@ -106,6 +106,7 @@ node('master'){
 				
 				CloseableHttpResponse scheduleres=httpClient.execute(schedule);
 				int fcode=scheduleres.getStatusLine().getStatusCode();
+				echo "Status code:"+fcode
 				
 				String finalresponse= EntityUtils.toString(scheduleres.getEntity());
 				echo "Response of Schedule a result import API:"+finalresponse
