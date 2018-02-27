@@ -143,7 +143,7 @@ node('master'){
 				jsonbody.put("importFileId",fileid);
 				jsonbody.put("entityType",entitytype);
 				echo "After adding body"
-				String body="{\"buildID\":"+buildid+",\"platformID\":"+platformid+",\"dropID\":"+dropid+",\"importFileId\":"+fileid+",\"entityType\":"+entitytype+"}"
+				String body="{\"buildID\":"+buildid+",\"platformID\":"+platformid+",\"dropID\":"+dropid+",\"importFileId\":"+fileid+",\"entityType\":"+"\""+entitytype+"\"}"
 				echo "Body:"+body
 				schedule.setEntity(body);
 				echo "After setting entity"
