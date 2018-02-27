@@ -39,9 +39,9 @@ baseUrl=QMetry URL
 apikey=API key(can be found in user profile in QMetry)
 scope=scope in form of(ProjectId:ReleaseId:CycleId)
 filepath=Relative file path from build directory
-buildId=CycleId
-platformId=PlatformId
-dropId=DropId
+buildId=Target cycle id
+platformId=Target platform id
+dropId=Target drop id
 entityType='JUNIT or TESTNG or CUCUMBER'
 
 
