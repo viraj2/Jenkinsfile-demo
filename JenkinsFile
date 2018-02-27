@@ -143,7 +143,7 @@ node('master'){
 				jsonbody.put("importFileId",fileid);
 				jsonbody.put("entityType",entitytype);
 				echo "After adding body"
-				String body=jsonbody.toString();
+				String body=jsonbody.get(0).toString();
 				schedule.setEntity(body);
 				CloseableHttpResponse scheduleres=httpClient.execute(schedule);
 				echo "After completing execution"
