@@ -75,6 +75,7 @@ node('master'){
 		if(code!=200)
 		{
 			echo "StatusCode:"+code
+			echo "[ERROR]Problem in uploading files"
 		}
 		else
 		{
@@ -107,9 +108,15 @@ node('master'){
 				CloseableHttpResponse scheduleres=httpClient.execute(schedule);
 				int fcode=scheduleres.getStatusLine().getStatusCode();
 				echo "Status code:"+fcode
-				
-				String finalresponse= EntityUtils.toString(scheduleres.getEntity());
-				echo "Response of Schedule a Result Import API:"+finalresponse
+				if(code==200)
+				{
+					String finalresponse= EntityUtils.toString(scheduleres.getEntity());
+					echo "Response of Schedule a Result Import API:"+finalresponse
+				}
+				else
+				{
+					echo "[ERROR]Problem in schedule result import"
+				}
 			}
 		}
 		
