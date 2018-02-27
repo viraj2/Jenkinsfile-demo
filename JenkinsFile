@@ -122,8 +122,11 @@ node('master'){
 				else
 				{
 					echo "[ERROR]Problem in schedule result import"
-					String finalresponse= EntityUtils.toString(scheduleres.getEntity());
-					echo "Error response:"+finalresponse
+					if(scheduleres.getEntity()!=null)
+					{
+						String finalresponse= EntityUtils.toString(scheduleres.getEntity());
+						echo "Error response:"+finalresponse
+					}
 				}
 			}
 		}
