@@ -1,5 +1,5 @@
 baseUrl='https://icpl.qmetry.com/AA888'
-apikey='kf7XkLmcW2V4thKrRTrbJqUdzFG5xkWiVP4zwO9y'
+apikey='kf7XkLmcW2V4thKrRTrbJqUdzFG5xkWiVP4zwO9'
 scope='56:207:466'
 filepath='TEST-com.examples.ex2.AppTest.xml'
 buildId='466'
