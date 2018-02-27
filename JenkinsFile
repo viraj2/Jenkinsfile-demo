@@ -39,11 +39,10 @@ node('master'){
         checkout scm
     }
 	stage('Build'){
-		if (isUnix()) {
-			sh "'${mvnHome}/bin/mvn' clean test"
-		} else {
-			bat(/"${mvnHome}\bin\mvn" clean test/)
-		}
+		withMaven(jdk: 'JDK', maven: 'maven3', mavenLocalRepo: '', mavenOpts: '', mavenSettingsFilePath: '') {
+           sh "mvn compile -Dbuild.version=${buildversion}"
+           sh "mvn package -P ${buildtarget}"
+        }
 	}
 	stage('UploadResults'){
 		load(workSpaceHome + "/config.groovy")
