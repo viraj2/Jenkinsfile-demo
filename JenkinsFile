@@ -109,7 +109,7 @@ node('master'){
 				echo "Status code:"+fcode
 				
 				String finalresponse= EntityUtils.toString(scheduleres.getEntity());
-				echo "Response of Schedule a result import API:"+finalresponse
+				echo "Response of Schedule a Result Import API:"+finalresponse
 			}
 		}
 		

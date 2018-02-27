@@ -1,0 +1,30 @@
+method java.io.BufferedReader readLine
+method java.lang.AutoCloseable close
+method org.apache.http.HttpEntity getContent
+method org.apache.http.HttpEntityEnclosingRequest setEntity org.apache.http.HttpEntity
+method org.apache.http.HttpMessage addHeader java.lang.String java.lang.String
+method org.apache.http.HttpResponse getEntity
+method org.apache.http.HttpResponse getStatusLine
+method org.apache.http.StatusLine getStatusCode
+method org.apache.http.client.HttpClient execute org.apache.http.client.methods.HttpUriRequest
+method org.apache.http.entity.mime.MultipartEntityBuilder addPart java.lang.String org.apache.http.entity.mime.content.ContentBody
+method org.apache.http.entity.mime.MultipartEntityBuilder build
+method org.json.JSONArray getJSONObject int
+method org.json.JSONObject get java.lang.String
+method org.json.JSONObject getJSONArray java.lang.String
+method org.json.JSONObject getJSONObject java.lang.String
+method org.json.JSONObject put java.lang.String java.lang.Object
+new java.io.BufferedReader java.io.Reader
+new java.io.File java.lang.String
+new java.io.InputStreamReader java.io.InputStream java.lang.String
+new java.io.InputStreamReader java.io.InputStream java.nio.charset.Charset
+new java.lang.StringBuilder
+new org.apache.http.client.methods.HttpPost java.lang.String
+new org.apache.http.entity.StringEntity java.lang.String
+new org.apache.http.entity.mime.content.FileBody java.io.File
+new org.json.JSONObject
+new org.json.JSONObject java.lang.String
+staticField java.nio.charset.StandardCharsets UTF_8
+staticMethod org.apache.http.entity.mime.MultipartEntityBuilder create
+staticMethod org.apache.http.impl.client.HttpClients createDefault
+staticMethod org.apache.http.util.EntityUtils toString org.apache.http.HttpEntity
