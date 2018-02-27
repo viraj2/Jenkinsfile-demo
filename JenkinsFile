@@ -75,7 +75,13 @@ node('master'){
 		if(code!=200)
 		{
 			echo "StatusCode:"+code
-			echo "[ERROR]Problem in uploading files"
+			echo "[ERROR]Problem in uploading file"
+			HttpEntity entity = response.getEntity();
+			if(entity!=null)
+			{
+				String jsonString = EntityUtils.toString(entity);
+				echo "Error response:"+jsonString
+			}
 		}
 		else
 		{
@@ -116,6 +122,8 @@ node('master'){
 				else
 				{
 					echo "[ERROR]Problem in schedule result import"
+					String finalresponse= EntityUtils.toString(scheduleres.getEntity());
+					echo "Error response:"+finalresponse
 				}
 			}
 		}
