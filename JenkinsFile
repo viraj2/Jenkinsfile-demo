@@ -146,6 +146,7 @@ node('master'){
 				String body="{\"buildID\":"+buildid+",\"platformID\":"+platformid+",\"dropID\":"+dropid+",\"importFileId\":"+fileid+",\"entityType\":"+entitytype+"}"
 				echo "Body:"+body
 				schedule.setEntity(body);
+				echo "After setting entity"
 				CloseableHttpResponse scheduleres=httpClient.execute(schedule);
 				echo "After completing execution"
 				int fcode=scheduleres.getStatusLine().getStatusCode();
