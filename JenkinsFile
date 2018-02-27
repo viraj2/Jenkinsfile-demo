@@ -30,7 +30,7 @@ node('master'){
 	
 	stage('UploadResults'){
 		load(workSpaceHome + "/config.groovy")
-		echo "Uploading testresult file........"
+		echo "Uploading Test Result File........"
 		def baseurl="${baseUrl}"
 		def apikey="${apikey}"
 		def scope="${scope}"
