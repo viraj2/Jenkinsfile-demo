@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<scriptApproval plugin="script-security@1.41">
+  <approvedScriptHashes/>
+  <approvedSignatures>
+    <string>method java.io.BufferedReader readLine</string>
+    <string>method java.lang.AutoCloseable close</string>
+    <string>method org.apache.http.HttpEntity getContent</string>
+    <string>method org.apache.http.HttpEntityEnclosingRequest setEntity org.apache.http.HttpEntity</string>
+    <string>method org.apache.http.HttpMessage addHeader java.lang.String java.lang.String</string>
+    <string>method org.apache.http.HttpResponse getEntity</string>
+    <string>method org.apache.http.HttpResponse getStatusLine</string>
+    <string>method org.apache.http.StatusLine getStatusCode</string>
+    <string>method org.apache.http.client.HttpClient execute org.apache.http.client.methods.HttpUriRequest</string>
+    <string>method org.apache.http.entity.mime.MultipartEntityBuilder addPart java.lang.String org.apache.http.entity.mime.content.ContentBody</string>
+    <string>method org.apache.http.entity.mime.MultipartEntityBuilder build</string>
+    <string>method org.json.JSONArray getJSONObject int</string>
+    <string>method org.json.JSONObject get java.lang.String</string>
+    <string>method org.json.JSONObject getJSONArray java.lang.String</string>
+    <string>method org.json.JSONObject getJSONObject java.lang.String</string>
+    <string>method org.json.JSONObject put java.lang.String java.lang.Object</string>
+    <string>new java.io.BufferedReader java.io.Reader</string>
+    <string>new java.io.File java.lang.String</string>
+    <string>new java.io.InputStreamReader java.io.InputStream java.lang.String</string>
+    <string>new java.io.InputStreamReader java.io.InputStream java.nio.charset.Charset</string>
+    <string>new java.lang.StringBuilder</string>
+    <string>new org.apache.http.client.methods.HttpPost java.lang.String</string>
+    <string>new org.apache.http.entity.StringEntity java.lang.String</string>
+    <string>new org.apache.http.entity.mime.content.FileBody java.io.File</string>
+    <string>new org.json.JSONObject</string>
+    <string>new org.json.JSONObject java.lang.String</string>
+    <string>staticField java.nio.charset.StandardCharsets UTF_8</string>
+    <string>staticMethod org.apache.http.entity.mime.MultipartEntityBuilder create</string>
+    <string>staticMethod org.apache.http.impl.client.HttpClients createDefault</string>
+    <string>staticMethod org.apache.http.util.EntityUtils toString org.apache.http.HttpEntity</string>
+  </approvedSignatures>
+  <aclApprovedSignatures/>
+  <approvedClasspathEntries/>
+  <pendingScripts/>
+  <pendingSignatures/>
+  <pendingClasspathEntries/>
+</scriptApproval>

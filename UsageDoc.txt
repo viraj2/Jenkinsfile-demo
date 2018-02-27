@@ -1,4 +1,4 @@
-1)Go to Manage Jenkins->In-process Script Approval and add all these methods in signatures approved box.
+1)Go to Manage Jenkins->In-process Script Approval and approve all these methods.
 OR You can add following signatures in JENKINS_HOME->scriptApproval.xml.
 
 method java.io.BufferedReader readLine
