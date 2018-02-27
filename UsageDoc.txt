@@ -1,3 +1,5 @@
+1)Go to Manage Jenkins->In-process Script Approval and add all these methods in signatures approved box.
+
 method java.io.BufferedReader readLine
 method java.lang.AutoCloseable close
 method org.apache.http.HttpEntity getContent
@@ -28,3 +30,25 @@ staticField java.nio.charset.StandardCharsets UTF_8
 staticMethod org.apache.http.entity.mime.MultipartEntityBuilder create
 staticMethod org.apache.http.impl.client.HttpClients createDefault
 staticMethod org.apache.http.util.EntityUtils toString org.apache.http.HttpEntity
+
+
+
+2)Create config.groovy file and add following details.
+
+baseUrl=QMetry URL
+apikey=API key(can be found in user profile in QMetry)
+scope=scope in form of(ProjectId:ReleaseId:CycleId)
+filepath=Relative file path from build directory
+buildId=CycleId
+platformId=PlatformId
+dropId=DropId
+entityType='JUNIT or TESTNG or CUCUMBER'
+
+
+3)Add Jenkinsfile and config.grrovy in your project.
+
+
+4)Create Pipeline project in Jenkins and configure it.
+
+
+5)Run Pipeline project. 
