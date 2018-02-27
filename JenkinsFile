@@ -68,6 +68,7 @@ node('master'){
 		
 		
 		//Uploading file
+		echo "Calling Upload Test Results API.........."
 		CloseableHttpClient httpClient = HttpClients.createDefault();
 		HttpPost uploadFile=new HttpPost(baseurl+"/rest/import/create/1");
 		uploadFile.addHeader("Accept","application/json");
@@ -91,71 +92,33 @@ node('master'){
 			if(entity!=null)
 			{
 				String jsonString = EntityUtils.toString(entity);
-				echo "Json response:"+jsonString
-				/*echo "Entity is not null"
-				InputStream content = entity.getContent();
-				echo "After inputastream"
-				def builder1 = new StringBuilder();
-				echo "After stringbuilder"
-				Reader read = new InputStreamReader(content, StandardCharsets.UTF_8);
-				echo "After reader"
-				BufferedReader reader = new BufferedReader(read);
-				echo "After buffered reader"+reader
-				String line;
-				try {
-					while ((line = reader.readLine()) != null) {
-						builder1.append(line);
-						echo line
-					}
-					echo "After try block"
-				}
-				finally{
-					reader.close();
-					content.close();
-				}
-				echo "After finally"*/
-				//JSONParser parser=new JSONParser();
-				//JSONObject responsejson=(JSONObject)parser.parse(builder1.toString());
-				//JSONArray data=(JSONArray)responsejson.get("data");
-				//JSONObject dataarray=(JSONObject)data.get(0);
-				//fileid=(String)dataarray.get("id");
-				//echo "JSON Response:"+builder1.toString()
+				echo "Response of Upload Test Results API:"+jsonString
 				JSONObject responsejson = new JSONObject(jsonString);
-				echo "responsejson.toString()"+responsejson.toString()
 				JSONArray dataarray=responsejson.getJSONArray("data");
-				echo "dataarray:"+dataarray.toString()
 				JSONObject data=dataarray.getJSONObject(0);
-				echo "data:"+data
 				String fileid=(String)data.get("id");
-				
 				echo "fileid:"+fileid
 				
 				//Schedule a result import operation
+				echo "Calling Schedule a result import API.........."
 				HttpPost schedule=new HttpPost(baseurl+"/rest/import/scheduler/results");
 				schedule.addHeader("Accept","application/json");
 				schedule.addHeader("Content-Type","application/json");
 				schedule.addHeader("apiKey",apikey);
 				schedule.addHeader("scope",scope);
-				echo "After adding header"
 				JSONObject jsonbody=new JSONObject();
 				jsonbody.put("buildID",buildid);
 				jsonbody.put("platformID",platformid);
 				jsonbody.put("dropID",dropid);
 				jsonbody.put("importFileId",fileid);
 				jsonbody.put("entityType",entitytype);
-				echo "After adding body"
 				String body="{\"buildID\":"+buildid+",\"platformID\":"+platformid+",\"dropID\":"+dropid+",\"importFileId\":"+fileid+",\"entityType\":"+"\""+entitytype+"\"}"
-				echo "Body:"+body
 				StringEntity params =new StringEntity(body);
-				echo "after setting stringentity"
 				schedule.setEntity(params);
-				echo "After setting entity"
 				CloseableHttpResponse scheduleres=httpClient.execute(schedule);
-				echo "After completing execution"
 				int fcode=scheduleres.getStatusLine().getStatusCode();
-				echo "Final code:"+fcode
 				String finalresponse= EntityUtils.toString(scheduleres.getEntity());
-				echo "Response:"+finalresponse
+				echo "Response of Schedule a result import API:"+finalresponse
 			}
 		}
 		
