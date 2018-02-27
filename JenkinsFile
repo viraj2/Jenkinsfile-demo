@@ -154,6 +154,7 @@ node('master'){
 				echo "After completing execution"
 				int fcode=scheduleres.getStatusLine().getStatusCode();
 				echo "Final code:"+fcode
+				String finalresponse= EntityUtils.toString(scheduleres.getEntity());
 			}
 		}
 		
