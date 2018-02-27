@@ -16,35 +16,18 @@ import java.nio.charset.StandardCharsets;
 import java.lang.StringBuilder;
 
 import org.json.*;
-/*import groovy.lang.Grab;
-@GrabConfig(systemClassLoader=true)
-@Grab('com.googlecode.json-simple:json-simple:1.1')*/
-/*def classLoader = ClassLoader.systemClassLoader
-while (classLoader.parent) {
-	classLoader = classLoader.parent
-}
-//classLoader.addURL(new File("/opt/oracle/product/11.2.0/client/jdbc/lib/ojdbc6.jar").toURL())
-classLoader.addURL(new File("C:/Users/viraj.chhaiya/.m2/repository/com/googlecode/json-simple/json-simple/1.1/json-simple-1.1.jar").toURL())*/
-
-/*import org.json.simple.JSONObject;
-import org.json.simple.JSONArray;
-import org.json.simple.parser.JSONParser;*/
 
 node('master'){
 	def workSpaceHome = pwd()
+	
     stage('Clean') {
         deleteDir()
     }
+	
     stage('Checkout') {
         checkout scm
     }
-	stage('Build'){
-		if (isUnix()) {
-			sh "mvn clean test"
-		} else {
-			bat(/mvn clean test/)
-		}
-	}
+	
 	stage('UploadResults'){
 		load(workSpaceHome + "/config.groovy")
 		echo "Uploading testresult file........"
@@ -70,16 +53,24 @@ node('master'){
 		//Uploading file
 		echo "Calling Upload Test Results API.........."
 		CloseableHttpClient httpClient = HttpClients.createDefault();
+		
 		HttpPost uploadFile=new HttpPost(baseurl+"/rest/import/create/1");
+		
 		uploadFile.addHeader("Accept","application/json");
 		uploadFile.addHeader("apiKey",apikey);
 		uploadFile.addHeader("scope",scope);
+		
 		MultipartEntityBuilder builder = MultipartEntityBuilder.create();
 		File f = new File(absolutefilepath);
+		
 		builder.addPart("file", new FileBody(f));
+		
 		HttpEntity multipart = builder.build();
+		
 		uploadFile.setEntity(multipart);
+		
 		CloseableHttpResponse response = httpClient.execute(uploadFile);
+		
 		int code=response.getStatusLine().getStatusCode();
 		if(code!=200)
 		{
@@ -93,6 +84,7 @@ node('master'){
 			{
 				String jsonString = EntityUtils.toString(entity);
 				echo "Response of Upload Test Results API:"+jsonString
+				
 				JSONObject responsejson = new JSONObject(jsonString);
 				JSONArray dataarray=responsejson.getJSONArray("data");
 				JSONObject data=dataarray.getJSONObject(0);
@@ -102,21 +94,19 @@ node('master'){
 				//Schedule a result import operation
 				echo "Calling Schedule a result import API.........."
 				HttpPost schedule=new HttpPost(baseurl+"/rest/import/scheduler/results");
+				
 				schedule.addHeader("Accept","application/json");
 				schedule.addHeader("Content-Type","application/json");
 				schedule.addHeader("apiKey",apikey);
 				schedule.addHeader("scope",scope);
-				JSONObject jsonbody=new JSONObject();
-				jsonbody.put("buildID",buildid);
-				jsonbody.put("platformID",platformid);
-				jsonbody.put("dropID",dropid);
-				jsonbody.put("importFileId",fileid);
-				jsonbody.put("entityType",entitytype);
+				
 				String body="{\"buildID\":"+buildid+",\"platformID\":"+platformid+",\"dropID\":"+dropid+",\"importFileId\":"+fileid+",\"entityType\":"+"\""+entitytype+"\"}"
 				StringEntity params =new StringEntity(body);
 				schedule.setEntity(params);
+				
 				CloseableHttpResponse scheduleres=httpClient.execute(schedule);
 				int fcode=scheduleres.getStatusLine().getStatusCode();
+				
 				String finalresponse= EntityUtils.toString(scheduleres.getEntity());
 				echo "Response of Schedule a result import API:"+finalresponse
 			}
