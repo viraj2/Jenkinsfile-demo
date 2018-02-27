@@ -38,13 +38,13 @@ node('master'){
     stage('Checkout') {
         checkout scm
     }
-	/*stage('Build'){
+	stage('Build'){
 		if (isUnix()) {
 			sh "'${mvnHome}/bin/mvn' clean test"
 		} else {
 			bat(/"${mvnHome}\bin\mvn" clean test/)
 		}
-	}*/
+	}
 	stage('UploadResults'){
 		load(workSpaceHome + "/config.groovy")
 		echo "Uploading testresult file........"
