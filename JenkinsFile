@@ -41,7 +41,7 @@ node('master'){
 		def platformid="${platformId}"
 		def dropid="${dropId}"
 		def entitytype="${entityType}"
-		def scope=projectid+":"+releaseid+":"+cycleid
+		String scope=projectid+":"+releaseid+":"+cycleid
 		
 		echo "baseurl:"+baseurl
 		echo "apikey:"+apikey
