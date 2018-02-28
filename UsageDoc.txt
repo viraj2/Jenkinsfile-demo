@@ -38,11 +38,12 @@ staticMethod org.apache.http.util.EntityUtils toString org.apache.http.HttpEntit
 
 baseUrl=QMetry URL
 apikey=API key(can be found in user profile in QMetry)
-scope=scope in form of(ProjectId:ReleaseId:CycleId)
+projectId=Target Project Id
+releaseId=Target Release Id
+cycleId=Target Cycle Id
 filepath=Relative file path from build directory
-buildId=Target cycle id
-platformId=Target platform id
-dropId=Target drop id
+platformId=Target Platform Id
+dropId=Target Drop Id
 entityType='JUNIT or TESTNG or CUCUMBER'
 
 
