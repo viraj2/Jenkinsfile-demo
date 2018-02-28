@@ -1,5 +1,7 @@
-1)Go to Manage Jenkins->In-process Script Approval and approve all these methods.
-OR You can add signatures in JENKINS_HOME->scriptApproval.xml provided in demoScriptApproval.xml.
+1)To run this script some methods need to be approved by Jenkins admin it can be done in two ways:
+	(1)When you run script after following configuration build will be failed then you need to go to (Manage Jenkins->In-process Script Approval) and approve all methods one by one and then script will run successfully.
+		OR
+	(2)You can add signatures in JENKINS_HOME->scriptApproval.xml provided in demoScriptApproval.xml.
 
 2)Create config.groovy file and add following details.
 baseUrl=QMetry URL
