@@ -35,16 +35,21 @@ node('master'){
 		def apikey="${apikey}"
 		def scope="${scope}"
 		def absolutefilepath="${workSpaceHome}"+"/"+"${filepath}"
-		def buildid="${buildId}"
+		def projectid="${projectId}"
+		def releaseid="${releaseId}"
+		def cycleid="${cycleId}"
 		def platformid="${platformId}"
 		def dropid="${dropId}"
 		def entitytype="${entityType}"
+		def scope=projectid+":"+releaseid+":"+cycleid
 		
 		echo "baseurl:"+baseurl
 		echo "apikey:"+apikey
+		echo "projectId:"+projectid
+		echo "releaseId:"+releaseid
+		echo "cycleId:"+cycleid
 		echo "scope:"+scope
 		echo "absolutepath:"+absolutefilepath
-		echo "buildID:"+buildid
 		echo "platformID:"+platformid
 		echo "dropID:"+dropid
 		echo "entityType:"+entitytype
@@ -75,7 +80,7 @@ node('master'){
 		if(code!=200)
 		{
 			echo "Status Code:"+code
-			echo "[ERROR]Problem in uploading file"
+			echo "[ERROR]Problem in Uploading File"
 			HttpEntity entity = response.getEntity();
 			if(entity!=null)
 			{
@@ -107,7 +112,7 @@ node('master'){
 				schedule.addHeader("apiKey",apikey);
 				schedule.addHeader("scope",scope);
 				
-				String body="{\"buildID\":"+buildid+",\"platformID\":"+platformid+",\"dropID\":"+dropid+",\"importFileId\":"+fileid+",\"entityType\":"+"\""+entitytype+"\"}"
+				String body="{\"buildID\":"+cycleid+",\"platformID\":"+platformid+",\"dropID\":"+dropid+",\"importFileId\":"+fileid+",\"entityType\":"+"\""+entitytype+"\"}"
 				StringEntity params =new StringEntity(body);
 				schedule.setEntity(params);
 				
@@ -121,7 +126,7 @@ node('master'){
 				}
 				else
 				{
-					echo "[ERROR]Problem in schedule result import"
+					echo "[ERROR]Problem in Schedule Result Import"
 					if(scheduleres.getEntity()!=null)
 					{
 						String finalresponse= EntityUtils.toString(scheduleres.getEntity());
@@ -130,7 +135,5 @@ node('master'){
 				}
 			}
 		}
-		
-		
 	}
 }
