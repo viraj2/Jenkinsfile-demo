@@ -48,7 +48,7 @@ node('master'){
 		echo "releaseId:"+releaseid
 		echo "cycleId:"+cycleid
 		echo "scope:"+scope
-		echo "absolutepath:"+absolutefilepath
+		echo "absolutePath:"+absolutefilepath
 		echo "platformID:"+platformid
 		echo "dropID:"+dropid
 		echo "entityType:"+entitytype
