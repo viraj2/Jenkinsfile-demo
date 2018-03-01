@@ -28,16 +28,16 @@ node('master'){
         checkout scm
     }
 	stage('Build') {
-     // Run the maven build
+		def mvnHome = tool 'Maven 3'
 		if (isUnix()) {
 			echo "in unix"
-			def mvnHome = tool 'M3'
+			
 			 sh "${mvnHome}/bin/mvn test"
 			echo "after unix"
 		}
 		else {
 			echo "before windows"
-			bat "mvn test"
+			bat(/"${mvnHome}\bin\mvn" test/)
 			echo "after windows"
       }    
     }
