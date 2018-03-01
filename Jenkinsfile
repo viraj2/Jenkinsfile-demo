@@ -91,7 +91,6 @@ def public List<String> fetchFiles(String filePath,String entityType)
 	}
 				
 	File file=new File(filePath);
-	echo "DEBUGGING:"+file.getParentFile()
 	
 	File[] farray=file.getParentFile().listFiles();
 	String path;
@@ -179,7 +178,9 @@ def public void uploadResults(String baseurl,String apikey,String scope,String a
 			schedule.addHeader("scope",scope);
 			echo "After adding headers"		
 			String body="{\"buildID\":"+cycleid+",\"platformID\":"+platformid+",\"dropID\":"+dropid+",\"importFileId\":"+fileid+",\"entityType\":"+"\""+entitytype+"\"}"
+			echo "body:"+body
 			StringEntity params =new StringEntity(body);
+			echo "After string entity"
 			schedule.setEntity(params);
 			echo "after setting entity"		
 			CloseableHttpResponse scheduleres=httpClient.execute(schedule);
