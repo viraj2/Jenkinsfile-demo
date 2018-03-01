@@ -73,10 +73,14 @@ node('master'){
 		{
 			List<String> list=new ArrayList<String>();
 			String extention="";
-			if(filePath.endsWith(".xml") &&(entityType.equals("JUNIT") || format.equals("TESTNG"))
+			if(filePath.endsWith(".xml") &&(entityType.equals("JUNIT") || entityType.equals("TESTNG"))
+			{
 				extention=".xml";
-			else if(filePath.endsWith(".json") && (format.equals("CUCUMBER"))
+			}
+			else if(filePath.endsWith(".json") && (entityType.equals("CUCUMBER"))
+			{
 				extention=".json";
+			}
 			else
 			{
 				echo "Enter valid filepath or entityType"
