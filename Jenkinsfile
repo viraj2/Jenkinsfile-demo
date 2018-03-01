@@ -77,7 +77,7 @@ node('master'){
 			{
 				extention=".xml";
 			}
-			else if(filePath.endsWith(".json") && (entityType.equals("CUCUMBER"))
+			else if(filePath.endsWith(".json") && entityType.equals("CUCUMBER"))
 			{
 				extention=".json";
 			}
