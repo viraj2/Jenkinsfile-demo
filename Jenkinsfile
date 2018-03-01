@@ -41,7 +41,6 @@ node('master'){
 		String dropid="${dropId}"
 		String entitytype="${entityType}"
 		String scope=projectid+":"+releaseid+":"+cycleid
-		absolutefilepath=absolutefilepath.replace("\\","/");
 		
 		echo "baseurl:"+baseurl
 		echo "apikey:"+apikey
