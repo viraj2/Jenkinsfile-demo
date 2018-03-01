@@ -30,16 +30,11 @@ node('master'){
 	stage('Build') {
 		def mvnHome = tool 'Maven 3'
 		if (isUnix()) {
-			echo "in unix"
-			
-			 sh "${mvnHome}/bin/mvn test"
-			echo "after unix"
-		}
+			sh "${mvnHome}/bin/mvn test"
+			}
 		else {
-			echo "before windows"
 			bat(/"${mvnHome}\bin\mvn" test/)
-			echo "after windows"
-      }    
+		}    
     }
 	stage('UploadResults'){
 		load(workSpaceHome + "/config.groovy")
