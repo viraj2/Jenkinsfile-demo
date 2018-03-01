@@ -55,7 +55,7 @@ node('master'){
 		
 		if(absolutefilepath.endsWith("*.xml") || absolutefilepath.endsWith("*.json"))
 		{
-			List<String> filelist=fetchFiles(filepath,entitytype);
+			List<String> filelist=fetchFiles(absolutefilepath,entitytype);
 			if(filelist!=null)
 			{
 				for(String f2:filelist)
