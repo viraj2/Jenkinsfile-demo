@@ -91,6 +91,8 @@ def public List<String> fetchFiles(String filePath,String entityType)
 	}
 				
 	File file=new File(filePath);
+	echo "DEBUGGING:"+file.getParentFile()
+	echo "DEBUGGING:"+file.getParentFile().getName()
 	File[] farray=file.getParentFile().listFiles();
 	String path;
 				
