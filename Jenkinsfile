@@ -33,6 +33,8 @@ node('master'){
 			sh "${mvnHome}/bin/mvn test"
 			}
 		else {
+			def jdk=tool 'JDK7'
+			bat(/"${mvnHome}\bin\mvn" -v/)
 			bat(/"${mvnHome}\bin\mvn" test/)
 		}    
     }
