@@ -69,7 +69,7 @@ node('master'){
 			uploadResults(absolutefilepath);
 		}
 		
-		public List<String> fetchFiles(String filePath)
+		def public List<String> fetchFiles(String filePath)
 		{
 			List<String> list=new ArrayList<String>();
 			String extention="";
@@ -112,7 +112,7 @@ node('master'){
 			return list;
 		}
 		
-		public void uploadResults(String absFilePath)
+		def public void uploadResults(String absFilePath)
 		{
 			//Uploading file
 			echo "Calling Upload Test Results API.........."
