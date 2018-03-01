@@ -28,7 +28,12 @@ node('master'){
         checkout scm
     }
 	stage('Build') {
-     mvn test     
+     // Run the maven build
+      if (isUnix()) {
+         sh "'${mvnHome}/bin/mvn' test"
+      } else {
+         bat(/"${mvnHome}\bin\mvn" test/)
+      }    
     }
 	stage('UploadResults'){
 		load(workSpaceHome + "/config.groovy")
