@@ -116,7 +116,7 @@ def public List<String> fetchFiles(String filePath,String entityType)
 	return list;
 }
 		
-def public void uploadResults(String baseurl,String apikey,String scope,String absFilePath,String cycleid,String platformid,String dropid,String entitype)
+def public void uploadResults(String baseurl,String apikey,String scope,String absFilePath,String cycleid,String platformid,String dropid,String entitytype)
 {
 	//Uploading file
 	echo "Uploading file "+absFilePath+".........."
