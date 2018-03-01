@@ -73,7 +73,7 @@ node('master'){
 		{
 			List<String> list=new ArrayList<String>();
 			String extention="";
-			if(filePath.endsWith(".xml") &&(entityType.equals("JUNIT") || entityType.equals("TESTNG"))
+			if(filePath.endsWith(".xml") &&(entityType.equals("JUNIT") || entityType.equals("TESTNG")))
 			{
 				extention=".xml";
 			}
