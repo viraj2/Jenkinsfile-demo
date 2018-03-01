@@ -19,10 +19,7 @@ import org.json.*;
 
 node('master'){
 	def workSpaceHome = pwd()
-	 tools {
-        maven 'Maven 3.3.9'
-        jdk 'jdk8'
-    }
+	
     stage('Clean') {
         deleteDir()
     }
@@ -34,7 +31,7 @@ node('master'){
      // Run the maven build
       if (isUnix()) {
 		echo "in unix"
-         sh "mvn test"
+         sh 'mvn test'
 		 echo "after unix"
       } else {
 		echo "before windows"
