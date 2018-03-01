@@ -27,7 +27,9 @@ node('master'){
     stage('Checkout') {
         checkout scm
     }
-	
+	stage('Build') {
+     mvn test     
+    }
 	stage('UploadResults'){
 		load(workSpaceHome + "/config.groovy")
 		echo "Uploading Test Result File.........."
