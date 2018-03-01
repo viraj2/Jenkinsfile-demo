@@ -34,6 +34,7 @@ node('master'){
 			}
 		else {
 			def jdk=tool 'JDK7'
+			env.JAVA_HOME = "${jdk}"
 			bat(/"${mvnHome}\bin\mvn" -v/)
 			bat(/"${mvnHome}\bin\mvn" test/)
 		}    
