@@ -4,18 +4,18 @@
 	(2)You can add signatures in JENKINS_HOME->scriptApproval.xml provided in demoScriptApproval.xml.
 
 2)Create config.groovy file and add following details.
-baseUrl=QMetry URL
-apikey=API key(can be found in user profile in QMetry)
-projectId=Target Project Id
-releaseId=Target Release Id
-cycleId=Target Cycle Id
-filepath=Relative file path from build directory
-platformId=Target Platform Id
-dropId=Target Drop Id
-entityType='JUNIT or TESTNG or CUCUMBER'
+	baseUrl=QMetry URL
+	apikey=API key(can be found in user profile in QMetry)
+	projectId=Target Project Id
+	releaseId=Target Release Id
+	cycleId=Target Cycle Id
+	filepath=Relative file path from build directory
+	platformId=Target Platform Id
+	dropId=Target Drop Id
+	entityType='JUNIT or TESTNG or CUCUMBER'
 
-3)Add Jenkinsfile and config.grrovy in your project.
+3)Add Jenkinsfile and config.groovy in your project.
 
-4)Create Pipeline project in Jenkins and configure it.
+4)Create (Pipeline/Multibranch Pipeline) project in Jenkins and configure it.
 
-5)Run Pipeline project. 
+5)Run (Pipeline/Multibranch Pipeline) project. 
