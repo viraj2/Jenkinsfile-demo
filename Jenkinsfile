@@ -30,9 +30,13 @@ node('master'){
 	stage('Build') {
      // Run the maven build
       if (isUnix()) {
+		echo "in unix"
          sh "'${mvnHome}/bin/mvn' test"
+		 echo "after unix"
       } else {
+		echo "before windows"
          bat(/"${mvnHome}\bin\mvn" test/)
+		 echo "after windows"
       }    
     }
 	stage('UploadResults'){
