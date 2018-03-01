@@ -3,6 +3,9 @@
   <approvedScriptHashes/>
   <approvedSignatures>
     <string>method java.io.BufferedReader readLine</string>
+    <string>method java.io.File getParentFile</string>
+    <string>method java.io.File getPath</string>
+    <string>method java.io.File listFiles</string>
     <string>method java.lang.AutoCloseable close</string>
     <string>method org.apache.http.HttpEntity getContent</string>
     <string>method org.apache.http.HttpEntityEnclosingRequest setEntity org.apache.http.HttpEntity</string>
@@ -23,6 +26,7 @@
     <string>new java.io.InputStreamReader java.io.InputStream java.lang.String</string>
     <string>new java.io.InputStreamReader java.io.InputStream java.nio.charset.Charset</string>
     <string>new java.lang.StringBuilder</string>
+    <string>new java.util.ArrayList</string>
     <string>new org.apache.http.client.methods.HttpPost java.lang.String</string>
     <string>new org.apache.http.entity.StringEntity java.lang.String</string>
     <string>new org.apache.http.entity.mime.content.FileBody java.io.File</string>

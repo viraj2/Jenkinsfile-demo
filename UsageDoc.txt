@@ -9,7 +9,7 @@
 	projectId=Target Project Id
 	releaseId=Target Release Id
 	cycleId=Target Cycle Id
-	filepath=Relative file path from build directory
+	filepath=Relative file path from build directory(Give path wnds with *.xml or *.json to upload multiple files)
 	platformId=Target Platform Id
 	dropId=Target Drop Id
 	entityType='JUNIT or TESTNG or CUCUMBER'
