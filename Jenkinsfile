@@ -29,14 +29,16 @@ node('master'){
     }
 	stage('Build') {
      // Run the maven build
-      if (isUnix()) {
-		echo "in unix"
-         sh 'mvn test'
-		 echo "after unix"
-      } else {
-		echo "before windows"
-         bat "mvn test"
-		 echo "after windows"
+		if (isUnix()) {
+			echo "in unix"
+			def mvnHome = tool 'M3'
+			 sh "${mvnHome}/bin/mvn test"
+			echo "after unix"
+		}
+		else {
+			echo "before windows"
+			bat "mvn test"
+			echo "after windows"
       }    
     }
 	stage('UploadResults'){
