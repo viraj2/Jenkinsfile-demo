@@ -170,18 +170,20 @@ def public void uploadResults(String baseurl,String apikey,String scope,String a
 					
 			//Schedule a result import operation
 			echo "Calling Schedule Result Import API.........."
+			echo "before httppost"
 			HttpPost schedule=new HttpPost(baseurl+"/rest/import/scheduler/results");
-					
+			echo "after httppost"		
 			schedule.addHeader("Accept","application/json");
 			schedule.addHeader("Content-Type","application/json");
 			schedule.addHeader("apiKey",apikey);
 			schedule.addHeader("scope",scope);
-					
+			echo "After adding headers"		
 			String body="{\"buildID\":"+cycleid+",\"platformID\":"+platformid+",\"dropID\":"+dropid+",\"importFileId\":"+fileid+",\"entityType\":"+"\""+entitytype+"\"}"
 			StringEntity params =new StringEntity(body);
 			schedule.setEntity(params);
-					
+			echo "after setting entity"		
 			CloseableHttpResponse scheduleres=httpClient.execute(schedule);
+			echo "after executing"
 			int fcode=scheduleres.getStatusLine().getStatusCode();
 			echo "Status Code:"+fcode
 			if(code==200)
