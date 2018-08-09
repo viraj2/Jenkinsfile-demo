@@ -1,7 +1,8 @@
 node {
 
     checkout scm
-    bat 'mvn test'
-    step([$class: 'TestReportDeployPublisher',testToRun: 'CLOUD', apikey: 'dsvgdg', format: 'testng/xml', file: '\\testng', testassethierarchy: 'TestScenario-TestCase', labels: 'label', version: 'version'])
+    step([$class: 'TestReportDeployPublisher',testToRun: 'CLOUD', apikey: 'b8fc48491392a27656646aa5a955b73e84c249b5f40f3fba085845075eea8001',  format: 'junit/xml', file: '\\junit\\TEST-com.examples.ex2.AppTest.xml ', testassethierarchy: 'TestScenario-TestCase', labels: 'junit,master,multibranch', version: 'version 1.11', testrunname: 'demo junit testrun multibranch', platform: 'platform 1', sprint: 'TES Sprint 1', comment: 'junit demo pipeline comment', component: 'pipeline'])
+    step([$class: 'TestReportDeployPublisher',testToRun: 'SERVER',jiraurlserver: 'http://qtm4jmysql.qmetry.com',username: 'admin',password: 'ispl123#',apikeyserver: 'b0535bd1402ba6755bf18f96daef6f1e6cd6e6c8726d900b5ef1e5c054ec6c95 ', formatserver: 'cucumber/json', fileserver: 'cucumber/cucumber.json', testassethierarchyserver: 'TestScenario-TestCase', labelsserver: 'cucumber,master,multibranch', versionserver: 'version 1.11', testrunnameserver: 'demo cucumber testrun multubranch', platformserver: 'platform 1', componentserver: 'pipeline project', sprintserver: 'JEN Sprint 1', commnetserver: 'democommnet'])
+    step([$class: 'TestReportDeployPublisher',testToRun: 'SERVER',jiraurlserver: 'http://qtm4jpostgres.qmetry.com:8080',username: 'admin',password: 'ispl123#',apikeyserver: '3527c2ae2174ca27609317aae022071ac16f2dd7f908ccb47288593110cb6ed9', formatserver: 'testng/xml', fileserver: '/testng', testassethierarchyserver: 'TestScenario-TestCase', labelsserver: 'junit,master,multibranch', versionserver: 'version 1.11', testrunnameserver: 'demo multibranch testrun', platformserver: 'platform 1', componentserver: 'pipeline project', sprintserver: 'JEN Sprint 1', commnetserver: 'junit master commnet'])
 
 }
