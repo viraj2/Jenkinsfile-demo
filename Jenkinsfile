@@ -14,6 +14,6 @@ node {
     }
 	stage('QTMUploadResult'){
 		load(workSpaceHome + "/config.groovy")
-		step([$class: 'QTMReportPublisher', qtmUrl: '${baseUrl}', automationFramework: 'TESTNG', testResultFilePath: 'testng/testng-results.xml', qtmAutomationApiKey: '${apikey}', project: 'MPT', release: 'Release 1', cycle: 'Cycle 1', buildName: 'testBuild1', platformName: 'Jenkins'])
+		step([$class: 'QTMReportPublisher', qtmUrl: ${baseUrl}, automationFramework: 'TESTNG', testResultFilePath: 'testng/testng-results.xml', qtmAutomationApiKey: '${apikey}', project: 'MPT', release: 'Release 1', cycle: 'Cycle 1', buildName: 'testBuild1', platformName: 'Jenkins'])
 	}
 }
