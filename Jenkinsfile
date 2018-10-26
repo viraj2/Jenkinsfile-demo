@@ -4,7 +4,7 @@ node {
         checkout scm
     }
     stage('Build') {    
-		maven= tool 'Maven 3.5.3'
+		maven= tool 'Maven'
 		if (isUnix()) {
 			sh "${maven}/bin/mvn test"
 		}
